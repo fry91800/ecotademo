@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 const sql = require('sql');
-const sequelize = new Sequelize('ecota', 'postgres', 'posert', {
-  host: 'localhost',
+const sequelize = new Sequelize('ecota', 'francois', 'USp4pGLXY2xOGUiIiu8IcPCsURAzquTD', {
+  host: 'dpg-cr7itlrv2p9s73a52ihg-a',
   dialect: 'postgres',  // Change this according to your database
   logging: process.env.SEQUELIZE_LOGGING === 'true' ? console.log : false
 });
