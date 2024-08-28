@@ -1,0 +1,98 @@
+
+svg.kiviat-chart
+script(src="https://d3js.org/d3.v6.min.js")
+script.
+    document.addEventListener("DOMContentLoaded", function() {
+    const width = 150;
+    const height = 150;
+    const radius = Math.min(width, height) / 2;
+    const numAxes = 5;
+    const angleSlice = Math.PI * 2 / numAxes;
+    const color1 = 'orange';
+    const color2 = 'steelblue';
+    const maxValue = 100; // Maximum value for scaling
+
+    // Example data with scores out of 100
+    const data = [
+        { axis: "1", value: Math.random() * (60)+40 },
+        { axis: "2", value: Math.random() * (60)+40 },
+        { axis: "3", value: Math.random() * (60)+40 },
+        { axis: "4", value: Math.random() * (60)+40 },
+        { axis: "5", value: Math.random() * (60)+40 }
+    ];
+
+    const dataOverlay = [
+        { axis: "1", value: Math.random() * (60)+40 },
+        { axis: "2", value: Math.random() * (60)+40 },
+        { axis: "3", value: Math.random() * (60)+40 },
+        { axis: "4", value: Math.random() * (60)+40 },
+        { axis: "5", value: Math.random() * (60)+40 }
+    ];
+
+    const svg = d3.select(".kiviat-chart")
+        .attr("width", width*2)// pour pas que ça tronque pour des raisons obscures
+        .attr("height", height*2)
+        .append("g")
+        .attr("transform", `translate(100, 100)`);//.attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+    // Define the radial line function for the polygon
+    const radialLine = d3.lineRadial()
+        .radius(d => radius * (d.value / maxValue))
+        .angle((d, i) => i * angleSlice);
+
+    // Create a complete dataset including the first point at the end
+    const completeData = [...data, data[0]];
+    const completeDataOverlay = [...dataOverlay, dataOverlay[0]];
+
+        // Draw the grid lines with no fill color and only stroke
+        for (let i = 1; i <= 5; i++) {
+            svg.append("circle")
+                .attr("r", radius * (i / 5))
+                .style("fill", "none") // No fill color
+                .style("stroke", "#888") // Set a light color for grid lines
+                .style("stroke-width", "1px"); // Line width for grid lines
+        }
+
+    // Draw the Kiviat chart as a filled polygon
+    svg.append("path")
+        .datum(completeData)
+        .attr("d", radialLine)
+        .style("fill", color1)
+        .style("fill-opacity", 0.3)
+        .style("stroke", color1)
+        .style("stroke-width", "2px");
+
+    // Draw the overlay chart as a filled polygon
+    svg.append("path")
+        .datum(completeDataOverlay)
+        .attr("d", radialLine)
+        .style("fill", color2)
+        .style("fill-opacity", 0.3)
+        .style("stroke", color2)
+        .style("stroke-width", "2px");
+
+    // Draw the axis lines
+    const axis = svg.selectAll(".axis")
+        .data(data)
+        .enter().append("g")
+        .attr("class", "axis")
+        .attr("transform", (d, i) => `rotate(${i * (360 / numAxes)})`);
+
+    axis.append("line")
+        .attr("x1", 0)
+        .attr("y1", 0)
+        .attr("x2", 0)
+        .attr("y2", -radius)
+        .style("stroke", "#666")
+        .style("stroke-width", "1px");
+
+    // Draw the labels outside the chart
+    axis.append("text")
+        .attr("x", 0)
+        .attr("y", -radius) // Adjust position
+        .attr("dy", ".35em")
+        .attr("text-anchor", "middle")
+        .style("font-size", "12px")
+        .text(d => d.axis)
+        .attr("transform", (d, i) => `rotate(${i * (360 / numAxes)}) translate(0, -15)`);
+    });

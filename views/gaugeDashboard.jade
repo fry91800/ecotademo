@@ -1,0 +1,70 @@
+
+svg#gauge-chart(width='200', height='100')
+script.
+    // Set up dimensions and margin
+    const width = 300;
+    const height = 100;
+    const radius = 75//Math.min(width, height) / 2;
+    const arcWidth = 20;
+    // Create the SVG container
+    const svg = d3.select("#gauge-chart")
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+    //.attr("transform", `translate(${width / 2}, ${height / 2})`); // A la base mais pas adapté
+    .attr("transform", `translate(100, 90)`);
+    // Define the gradient
+    const gradient = svg.append("defs")
+    .append("linearGradient")
+    .attr("id", "gradient")
+    .attr("x1", "0%")
+    .attr("y1", "0%")
+    .attr("x2", "100%")
+    .attr("y2", "0%");
+    gradient.append("stop")
+    .attr("offset", "0%")
+    .attr("stop-color", "red");
+    gradient.append("stop")
+    .attr("offset", "25%")
+    .attr("stop-color", "orange");
+    gradient.append("stop")
+    .attr("offset", "75%")
+    .attr("stop-color", "yellow");
+    gradient.append("stop")
+    .attr("offset", "100%")
+    .attr("stop-color", "green");
+    // Define the arc
+    const arc = d3.arc()
+    .innerRadius(radius - arcWidth)
+    .outerRadius(radius)
+    .startAngle(-Math.PI / 2+0.5)
+    .endAngle(Math.PI / 2-0.5);
+    // Create the gauge arc
+    svg.append("path")
+    .datum({ endAngle: Math.PI / 2 })
+    .style("fill", "url(#gradient)")
+    .attr("d", arc);
+    // Add a center text
+    var grade = Math.round(Math.random() * 100)
+    svg.append("text")
+    .attr("text-anchor", "middle")
+    .attr("font-size", "24px")
+    .attr("y", -15)
+    .text(grade);
+    // Add a needle to the gauge
+    
+    var needleValue = (grade/100*(0.836 - 0.164)) + 0.164;// 164 min pour le spectreMath.random();  // Change this value to simulate needle movement
+    var needleAngle = -Math.PI / 2 + needleValue * Math.PI -Math.PI/2;
+    svg.append("line")
+    .attr("x1", radius * 0.7 * Math.cos(needleAngle))
+    .attr("y1", radius * 0.7 * Math.sin(needleAngle))
+    .attr("x2", radius * 0.9 * Math.cos(needleAngle))
+    .attr("y2", radius * 0.9 * Math.sin(needleAngle))
+    .attr("stroke", "#000")
+    .attr("stroke-width", 3);
+    // Add a circle at the base of the needle
+    /*svg.append("circle")
+    .attr("cx", 0)
+    .attr("cy", 0)
+    .attr("r", 4)
+    .attr("fill", "#000");*/

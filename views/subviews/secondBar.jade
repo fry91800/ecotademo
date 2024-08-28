@@ -1,0 +1,20 @@
+#secondBar
+    #secondBarLeftSide
+        if session && (session.role === 1 || session.role === 2)
+            .item
+                a(href="/#{lang}/selection")
+                    button#selectionButton
+                        p #{__("selectionPhase")}
+
+        if session && (session.role > 1)
+            .item.cotaTab
+                span 2
+                a(href="/#{lang}/cota/#{session.orgaid}")
+                    button#cotaButton
+                        p #{__("scoringPhase")}
+    #secondBarRightSide
+        if session && (session.role === 1 || session.role === 2)
+            .item
+                a(href="/#{lang}/stats")
+                    button#statsButton
+                        p #{__("stats")}    

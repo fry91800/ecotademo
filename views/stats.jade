@@ -1,0 +1,8 @@
+extends layout
+block content
+    include subviews/mainBar.jade
+    include subviews/secondBar.jade
+    h1 Stats
+    p Admin: #{stats.sessionCountAdmin}
+    p Manager: #{stats.sessionCountManager}
+    p Buyer: #{stats.sessionCountBuyer}

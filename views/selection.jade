@@ -1,0 +1,7 @@
+extends layout
+block content
+    include subviews/mainBar.jade
+    include subviews/secondBar.jade
+    if (session && session.role == 1)
+        include adminSelection.jade
+    include test.jade

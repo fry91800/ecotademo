@@ -1,0 +1,21 @@
+const bcrypt = require('bcrypt');
+
+const saltRounds = 10; // Number of salt rounds to generate
+
+// Function to hash a password
+const hashPassword = async (plainPassword) => {
+  try {
+    const salt = await bcrypt.genSalt(saltRounds);
+    const hashedPassword = await bcrypt.hash(plainPassword, salt);
+    return hashedPassword;
+  } catch (error) {
+    throw new Error('Error hashing password');
+  }
+};
+
+// Example usage
+const plainPassword = 'manager';
+hashPassword(plainPassword).then((hashedPassword) => {
+  console.log('Hashed Password:', hashedPassword);
+  // Save hashedPassword to the database
+});

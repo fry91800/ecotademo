@@ -1,0 +1,140 @@
+
+#newCommentPopup.overlay
+    #commentPopup.selectionPopup
+        .content
+            h1 Comment
+        .content
+            textarea#comment(placeholder="Comment" rows="6" cols="30") 
+        .content
+            button#cancel-comment Cancel
+            button#submit-comment Submit
+
+#addForcePopup.overlay
+    #forcePopup.selectionPopup
+        .content
+            h1 Force selection/deselection
+        .content
+            textarea#force-comment(placeholder="Comment" rows="6" cols="30") 
+        .content
+            button#cancel-force Cancel
+            button#submit-force Submit
+
+#checkReasonPopup.overlay
+    #checkReason.selectionPopup
+        .content
+            h1 Check reason
+        .content
+            textarea#reason-comment(placeholder="Comment" rows="6" cols="30") 
+        .content
+            button#cancel-reason Cancel
+            button#submit-reason Submit            
+#viewHistoryPopup.overlay
+    #historyPopup
+        .cancelBar
+            button#cancel-history.cancelButton <i class="fa-solid fa-xmark"></i>
+        h1 History
+        table#history-table.table1
+            thead
+                tr
+                    th Year
+                    th Selected
+                    th Name
+                    th Intensity
+                    th Reason1
+                    th Reason2
+                    th Reason3
+                    th Reason4
+                    th Comment
+            tbody
+//- table#data-table.table1.selectionTable
+//-     thead
+//-         tr
+//-             th Selected
+//-                 br
+//-                 button#filter-selected.filter-button <i class="fas fa-check-square ticked-checkbox"></i>
+//-                 button#filter-not-selected.filter-button <i class="far fa-square"></i>
+//-             th Supplier
+//-                 button#sort-supplier.sort-button(data-sort="asc") <i class="fas fa-sort"></i>
+//-                 br
+//-                 input#search-supplier(type="text" placeholder="Search")
+//-             th Revenue €
+//-                 button#sort-revenue.sort-button(data-sort="asc") <i class="fas fa-sort"></i>
+//-                     //br
+//-                     //input#revenue-slider(type="range" min="0" max="10000000" step="100000" value="0")
+//-                 br
+//-                 button#filter-revenue-sign >
+//-                 input#filter-revenue(type="text" value="0" placeholder="Filter")
+//-             th Intensity
+//-                 br
+//-                 button#filter-intensity0.filter-button n
+//-                 button#filter-intensity1.filter-button 1
+//-                 button#filter-intensity2.filter-button 2
+//-                 button#filter-intensity3.filter-button 3
+//-                 button#filter-intensity4.filter-button 4
+//-             th Reason1
+//-                 br
+//-                 button#filter-reason1.filter-button <i class="fas fa-check-square ticked-checkbox"></i>
+//-                 button#filter-not-reason1.filter-button <i class="far fa-square"></i>
+//-             th Reason2
+//-                 br
+//-                 button#filter-reason2.filter-button <i class="fas fa-check-square ticked-checkbox"></i>
+//-                 button#filter-not-reason2.filter-button <i class="far fa-square"></i>            
+//-             th Reason3
+//-                 br
+//-                 button#filter-reason3.filter-button <i class="fas fa-check-square ticked-checkbox"></i>
+//-                 button#filter-not-reason3.filter-button <i class="far fa-square"></i>            
+//-             th Reason4
+//-                 br
+//-                 button#filter-reason4.filter-button <i class="fas fa-check-square ticked-checkbox"></i>
+//-                 button#filter-not-reason4.filter-button <i class="far fa-square"></i>            
+//-             th Comment            
+//-             th History
+
+
+
+
+table#data-table.table1.selectionTable
+    thead
+        tr
+            th Add to scope
+                button#filter-selected.filter-button <i class="fas fa-check-square ticked-checkbox"></i>
+                button#filter-not-selected.filter-button <i class="far fa-square"></i>
+            th Supplier name
+                button#sort-supplier.sort-button(data-sort="asc") <i class="fas fa-sort"></i>
+                br
+                input#search-supplier(type="text" placeholder="Search")
+            th Yearly spend €
+                button#sort-revenue.sort-button(data-sort="asc") <i class="fas fa-sort"></i>
+                    //br
+                    //input#revenue-slider(type="range" min="0" max="10000000" step="100000" value="0")
+                br
+                button#filter-revenue-sign >
+                input#filter-revenue(type="text" value="0" placeholder="Filter")
+            th Previous monitoring level
+                br
+                button#filter-intensity0.filter-button n
+                button#filter-intensity1.filter-button 1
+                button#filter-intensity2.filter-button 2
+                button#filter-intensity3.filter-button 3
+                button#filter-intensity4.filter-button 4
+            th NPI / Critical product 1 / Reach impact
+                br
+                button#filter-reason1.filter-button <i class="fas fa-check-square ticked-checkbox"></i>
+                button#filter-not-reason1.filter-button <i class="far fa-square"></i>
+            th HIE / SE / Weak signal
+                br
+                button#filter-reason2.filter-button <i class="fas fa-check-square ticked-checkbox"></i>
+                button#filter-not-reason2.filter-button <i class="far fa-square"></i>            
+            th New / Change of organization / Agree
+                br
+                button#filter-reason3.filter-button <i class="fas fa-check-square ticked-checkbox"></i>
+                button#filter-not-reason3.filter-button <i class="far fa-square"></i>            
+            th Involved in targeted strategy
+                br
+                button#filter-reason4.filter-button <i class="fas fa-check-square ticked-checkbox"></i>
+                button#filter-not-reason4.filter-button <i class="far fa-square"></i>            
+            th Comment            
+            th History
+    tbody
+        // Data will be loaded here
+div#load-more Load More

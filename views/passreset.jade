@@ -1,0 +1,13 @@
+extends layout
+block content
+  include subviews/mainBar.jade
+  h1 #{__("new_pass")}
+  form(action="/#{lang}/user/passreset?token=#{token}" method="POST")
+    div
+      label(for="pass") #{__("new_pass")}:
+      input(type="text" id="pass" name="pass" required)
+    div
+      label(for="confirmpass") #{__("confirm_new_pass")}:
+      input(type="text" id="confirmpass" name="confirmpass" required)
+    div
+      button(type="submit") Submit

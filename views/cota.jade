@@ -1,0 +1,189 @@
+extends layout
+block content
+    script(src="/javascripts/cota.js")
+    include subviews/mainBar.jade
+    include subviews/secondBar.jade
+    #perfPopup.overlay
+        .formPopup
+            .cancelBar
+                button#cancel-cota-perf-form.cancelButton <i class="fa-solid fa-xmark"></i>
+            h1 GRP-0132
+            .formWrap
+                table.formTable
+                    tr
+                        td Code
+                        td Question
+                        td Oui
+                        td Non
+                        td Note N-1
+                        td Commentaire
+                        td Commentaire N-1
+                    tr
+                        td C1
+                        td Les prix du fournisseur sont compétitifs par rapport aux prix des autres fournisseurs du panel / du marché ?
+                        td
+                            input(type="radio" name="C1")
+                            span Cd = 0
+                        td
+                            input(type="radio" name="C1")
+                            span Cd = 30
+                        td Oui
+                        td
+                            textarea
+                        td Bon                               
+                    tr
+                        td C2.1
+                        td Le fournisseur baisse ses prix d’une année sur l’autre ?
+                        td
+                            input(type="radio" name="C2.1")
+                            span Ce1 = 0
+                        td
+                            input(type="radio" name="C2.1")
+                            span Ce1 = 7
+                        td Oui
+                        td
+                            textarea
+                        td Passable   
+                    tr
+                        td C2.2
+                        td Le fournisseur ne dénonce pas les prix ?
+                        td
+                            input(type="radio" name="C2.2")
+                            span Ce2 = 0
+                        td
+                            input(type="radio" name="C2.2")
+                            span Ce2 = 6
+                        td Oui
+                        td
+                            textarea
+                        td Bon   
+                    tr
+                        td C2.3
+                        td Le fournisseur propose des actions visant à réduire les coûts
+                        td
+                            input(type="radio" name="C2.3")
+                            span Ce3 = 0
+                        td
+                            input(type="radio" name="C2.3")
+                            span Ce3 = 7
+                        td Oui
+                        td
+                            textarea
+                        td Correct   
+                    tr
+                        td C3.1
+                        td Le fournisseur accepte les règles standards de Safran (application des CGA, pénalités, …)
+                        td
+                            input(type="radio" name="C3.1")
+                            span Cs1 = 0
+                        td
+                            input(type="radio" name="C3.1")
+                            span Cs1 = 4
+                        td Oui
+                        td
+                            textarea
+                        td Ok   
+                    tr
+                        td C3.2
+                        td Le fournisseur donne une bonne visibilité sur la décomposition de ses coûts (part des matières premières, de la main d’œuvre, de l’outillage, des amortissements … dans son coût de production)
+                        td
+                            input(type="radio" name="C3.2")
+                            span Cs2 = 0
+                        td
+                            input(type="radio" name="C3.2")
+                            span Cs2 = 3
+                        td Oui
+                        td
+                            textarea
+                        td Correct   
+                    tr
+                        td C3.3
+                        td Les litiges de cause fournisseur sont inexistants ou faciles à traiter et en petit nombre (litiges facturation…)
+                        td
+                            input(type="radio" name="C3.3")
+                            span Cs3 = 0
+                        td
+                            input(type="radio" name="C3.3")
+                            span Cs3 = 3
+                        td Oui
+                        td
+                            textarea
+                        td Mauvais   
+    #riskPopup.overlay
+        .formPopup
+            .cancelBar
+                button#cancel-cota-risk-form.cancelButton <i class="fa-solid fa-xmark"></i>
+            h1 GRF-0118
+            .formWrap
+                table.formTable
+                    tr
+                        td Theme
+                        td Code
+                        td Sous-Theme
+                        td.red.active Niveau 4
+                        td.orange.active Niveau 3
+                        td.greenyellow.active Niveau 2
+                        td.green.active Niveau 1
+                        td N-1
+                        td Commentaire
+                        td Commentaire N-1
+                    tr
+                        td F3 Risques financiers (Défaillance) & Dépendance
+                        td F3.1
+                        td Risques financiers (cf. GRP-0245 & GRP-0049 + Direction des Achats Groupe pour l'échelle et les données)
+                        td
+                            input(type="radio" name="F3.1")
+                            span Criticité : Extrême
+                        td
+                            input(type="radio" name="F3.1")
+                            span Criticité : Significative, avec impact significatif ou plus
+                        td 
+                            input(type="radio" name="F3.1")
+                            span Criticité : Significative, avec impact limité ou moindre
+                        td 
+                            input(type="radio" name="F3.1")
+                            span Criticité : Basse
+                        td.red.active Niveau 4
+                        td
+                            textarea
+                        td Très problematique
+                    tr
+                        td F3 Risques financiers (Défaillance) & Dépendance
+                        td F3.2
+                        td Dépendance (cf. GRP-0245 and PowerBI Direction des Achats Groupe)
+                        td
+                            input(type="radio" name="F3.2")
+                            span Taux dépendance avec le groupe Safran : > 50%
+                        td
+                            input(type="radio" name="F3.2")
+                            span Taux dépendance avec le groupe Safran : > 30%
+                        td 
+                            input(type="radio" name="F3.2")
+                            span Taux dépendance avec le groupe Safran : < 30%
+                        td 
+                            input(type="radio" name="F3.2")
+                            span Taux dépendance avec le groupe Safran : < 20%
+                        td.green.active Niveau 1
+                        td
+                            textarea
+                        td Correct                        
+    h1 #{__("mytasks")}
+    br
+    #cotaCardList
+        #cotaCard1.perfCard.cotaCard
+            .cardTop
+                span GRP-0132
+            #cotaCardBody1.cardBody
+                span Aerostar<br>-<br>Paris<br><i class="fa-solid fa-pen-to-square"></i>
+                    
+            .cardBottom
+                a(href="/#{lang}/supplier/a") #{__("results")}
+
+        #cotaCard1.riskCard.cotaCard
+            .cardTop
+                span GRF-0118
+            #cotaCardBody2.cardBody
+                span Aerostar<br>-<br>Paris<br><i class="fa-solid fa-pen-to-square"></i>
+                    
+            .cardBottom
+                a(href="/#{lang}/supplier/a") #{__("results")}

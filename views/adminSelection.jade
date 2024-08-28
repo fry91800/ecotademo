@@ -1,0 +1,17 @@
+#adminZone
+    #adminPanel
+        h1 #{__("preselection")}
+        #revenuePanel.item
+            h2 #{__("spendCoverage")}
+            p Please enter the % of Turn Over expected (80% mini)
+            .input-wrapper
+                input#revenue-input(type="number" placeholder="Revenue", value=campaignRevenue)
+                span.input-suffix %
+        #intensityPanel.item
+            h2 #{__("previousMonitoringLevel")}
+            p Please enter the previous monitoring level expected
+            select#intensity-input
+                option(data-code="1" selected= campaignIntensity === 1) Reduce
+                option(data-code="2" selected= campaignIntensity === 2) Nominal
+                option(data-code="3" selected= campaignIntensity === 3) Tightened
+                option(data-code="4" selected= campaignIntensity === 4) Intensive

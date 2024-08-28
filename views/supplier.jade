@@ -1,0 +1,69 @@
+extends layout
+block content
+    include subviews/mainBar.jade
+    include subviews/secondBar.jade
+    h1 Aerostar
+    #supplierDashboardZone
+        #supplierDashboard
+            #dataviz
+                #scoreGauge
+                    include gaugeDashboard.jade
+                #scoreRadar
+                    #radarInfo
+                        #supplierCaption
+                            span Aerostar
+                        #comparisonCaption
+                            span WB
+                    include radarDashboard.jade
+            #scoreTableZone
+                table#scoreTable.table1
+                    thead
+                        tr
+                            th Axis
+                            th WB
+                            th SE
+                            th LGI
+                            th Total
+                    tbody
+                        tr
+                            td OQD
+                            td 45
+                            td 76
+                            td 65
+                            td 57
+                        tr
+                            td OTD
+                            td 87
+                            td 56
+                            td 77
+                            td 73
+                        tr
+                            td Competitiveness
+                            td 75
+                            td 75
+                            td 56
+                            td 46                               
+                        tr
+                            td Capabilities
+                            td 64
+                            td 45
+                            td 34
+                            td 88                               
+                        tr
+                            td Management
+                            td 45
+                            td 34
+                            td 76
+                            td 87                               
+                        
+
+
+
+
+//-#intensityDashboard
+//-            include gaugeDashboard.jade
+ //-           #scoreDashboard
+  //-              include scoreDashboard.jade
+  //-  #scoreZone
+  //-      #scoreDashboard
+ //-           include scoreDashboard.jade

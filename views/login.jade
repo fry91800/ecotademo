@@ -1,0 +1,15 @@
+extends layout
+block content
+  include subviews/mainBar.jade
+  h1 #{__("log_in")}
+  form(action="/#{lang}/user/login" method="POST")
+    div
+      label(for="email") #{__("mail")}:
+      input(type="text" id="mail" name="mail" required)
+    div
+      label(for="password") #{__("password")}:
+      input(type="text" id="pass" name="pass" required)
+    div
+      a(href="/#{lang}/user/recovery") #{__("forgot_pass")}
+    div  
+      button(type="submit") Submit
